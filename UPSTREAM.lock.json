@@ -1,0 +1,66 @@
+{
+  "schemaVersion": 2,
+  "distribution": "homr",
+  "buildVersion": "0.7.0+brightclef.export3",
+  "exportPreservation": "mixed-clef-chords-v1",
+  "upstream": {
+    "repository": "https://github.com/liebharc/homr",
+    "tag": "v0.7.0",
+    "commit": "8b5dcf7d7bdd1a47911dc0c661c573b957271eab",
+    "licence": "AGPL-3.0 (LICENSE at the tag; no additional permissions)",
+    "sdist": {
+      "url": "https://files.pythonhosted.org/packages/source/h/homr/homr-0.7.0.tar.gz",
+      "sha256": "4078b9e70c16a1250288d92e065528bbd8712617339749407f057aebab9cfb7d"
+    },
+    "publishedWheelSha256": "84c6028df06e60b1aff158c9049d1876b22137144e319b61bacc41518842c4a9",
+    "sdistMatchesTag": "verified 2026-10-13: the sdist homr/ tree is byte-identical to `git archive v0.7.0`; pyproject.toml differs only by the release version (0.1.0 at the tag, 0.7.0 in the sdist) and poetry-dynamic-versioning enable=false; the published wheel's homr/ tree is byte-identical to the sdist's",
+    "derivedFrom": {
+      "commit": "33baa326900faa12702df8c4bdcbea034a3d6a34",
+      "summary": "Split clefs and barlines out of chords of notes in the MusicXML writer",
+      "inReleasedTag": false,
+      "scopeTaken": "clef + note/rest groups only",
+      "authorDate": "2026-10-04",
+      "commitDate": "2026-10-05"
+    }
+  },
+  "files": {
+    "homr/music_xml_generator.py": {
+      "baseSha256": "e518ca08605c09a866f028dc26c0e27968bfcea52b1c437ac557ee8972082d26",
+      "patchedSha256": "40da256c114d4f2774168af4405a539a2ad4ccea7538ef79fcb2f4f01d0ab7b9"
+    },
+    "pyproject.toml": {
+      "baseSha256": "f6fa252e74b22a9f94bda07ca4b420f7c1e5a9fe7c139b95e540e630920e4262",
+      "patchedSha256": "0ff636ead09361b97cf9651dd8a39a9d97efcaface486f4c658af1deae93002e"
+    },
+    "homr/main.py": {
+      "baseSha256": "b1605b5f22d7fc7f79f7e4d5c932e52bd5e34e655f0a3a1c13d96f2cf99b80fa",
+      "patchedSha256": "5a90854e3752dc8d29b12bf326d54501250ac3f4fab105d99e354528767b45f3"
+    }
+  },
+  "patches": [
+    "patches/0001-split-mixed-clef-chords.patch",
+    "patches/0002-local-version-and-static-build-backend.patch",
+    "patches/0003-opt-in-symbol-capture.patch"
+  ],
+  "sourceDateEpoch": 1792022400,
+  "sourceDateEpochNote": "2026-10-15T00:00:00Z, the date of the export3 version and identity change; earlier modifications are dated in NOTICE.md",
+  "addedFiles": {
+    "homr/BRIGHTCLEF-NOTICE.md": {
+      "from": "NOTICE.md",
+      "purpose": "AGPL section 5(a) modification notice carried inside the installed program"
+    },
+    "homr/symbol_capture.py": {
+      "from": "native/symbol_capture.py",
+      "purpose": "Default-off engine-owned private pre-export musical capture"
+    }
+  },
+  "runtimeRequirements": {
+    "linux-py311": "requirements/runtime-linux-py311.txt",
+    "exporterOnly": "requirements/exporter-only.txt",
+    "sdistBuildTools": "requirements/sdist-build-tools.txt",
+    "pinnedTo": "upstream poetry.lock at v0.7.0 (requirements/constraints.txt)"
+  },
+  "buildBackend": "poetry-core==2.4.1 (requirements/build.txt, hash-pinned)",
+  "expectedWheelNote": "Pin the reviewed wheel after changes to patches, added native source or NOTICE.md. The wheel excludes this lock, so its pin is stable.",
+  "expectedWheelSha256": "f4a61e1bf12709a011dd8d9e497b4bd7eba2d0fb613655c7d8d7267b39c6d93e"
+}

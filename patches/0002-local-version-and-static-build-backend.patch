@@ -1,0 +1,36 @@
+From: Fourdot Tech LLC <support@fourdottech.com>
+Date: Thu, 15 Oct 2026
+Subject: [PATCH 2/2] Mark the build as a modified version; build with poetry-core only
+
+The distribution version becomes the PEP 440 local version
+0.7.0+brightclef.export3, so the installed program identifies itself as a
+modified build and the worker's exact-version pin refuses stock 0.7.0 under
+this configuration (and vice versa). The published sdist already disables
+dynamic versioning ([tool.poetry-dynamic-versioning] enable = false), so the
+poetry-dynamic-versioning backend only delegated to poetry-core; calling
+poetry-core directly removes one unpinned build dependency. Package contents
+and runtime dependencies are unchanged.
+
+Licence: GNU AGPL v3 (same as homr). See ../NOTICE.md.
+
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -1,6 +1,6 @@
+ [tool.poetry]
+ name = "homr"
+-version = "0.7.0"
++version = "0.7.0+brightclef.export3"
+ description = "End-to-end Optical Music Recognition (OMR) system build on top of vision transformers."
+ authors = ["Christian Liebhardt <christian.liebhardt@arcor.de>"]
+ license = "AGPL-3.0"
+@@ -66,8 +66,8 @@
+ pattern  = "^v(?P<base>\\d+\\.\\d+\\.\\d+)(-?((?P<stage>[a-zA-Z]+)\\.?(?P<revision>\\d+)?))?"
+ 
+ [build-system]
+-requires = ["poetry-core>=1.0.0", "poetry-dynamic-versioning"]
+-build-backend = "poetry_dynamic_versioning.backend"
++requires = ["poetry-core>=1.0.0"]
++build-backend = "poetry.core.masonry.api"
+ 
+ ## Tools
+ [tool.black]

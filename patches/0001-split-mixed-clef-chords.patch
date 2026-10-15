@@ -1,0 +1,63 @@
+From: Fourdot Tech LLC <support@fourdottech.com>
+Date: Tue, 13 Oct 2026
+Subject: [PATCH 1/2] Split clefs out of chords of notes in the MusicXML writer
+
+Applies to: homr 0.7.0 (tag v0.7.0, commit 8b5dcf7d7bdd1a47911dc0c661c573b957271eab;
+PyPI sdist homr-0.7.0.tar.gz sha256 4078b9e70c16a1250288d92e065528bbd8712617339749407f057aebab9cfb7d).
+
+Derived from upstream commit 33baa326900faa12702df8c4bdcbea034a3d6a34 (author
+slobaspid, committed by Christian Liebhardt, 2026-10-05), narrowed to the clef
+case: only a group made entirely of clefs plus notes/rests is split, clefs first,
+after tuplet assignment. Key/time signatures, barlines, repeats and voltas joined
+to a chord keep the unmodified 0.7.0 behaviour. No recognition, model, decoder
+or other exporter code is changed.
+
+Licence: GNU AGPL v3 (same as homr). See ../NOTICE.md.
+
+--- a/homr/music_xml_generator.py
++++ b/homr/music_xml_generator.py
+@@ -148,7 +148,7 @@
+         measures.append(current_measure)
+ 
+     measure_number = 1
+-    groups = add_tuplet_start_stop(group_into_chords(voice))
++    groups = split_mixed_clef_chords(add_tuplet_start_stop(group_into_chords(voice)))
+     division, nominator = find_division_and_time_signature_nominator(groups)
+     state = ConversionState(division, nominator)
+     measures: list[mxl.XMLMeasure] = []
+@@ -869,6 +869,35 @@
+     return TupletParser.parse(groups)
+ 
+ 
++def split_mixed_clef_chords(groups: list[SymbolChord]) -> list[SymbolChord]:
++    """
++    Brightclef modification (0.7.0+brightclef.export1), derived from upstream
++    commit 33baa326900faa12702df8c4bdcbea034a3d6a34 ("Split clefs and barlines out
++    of chords of notes in the MusicXML writer") and narrowed to clefs only.
++
++    The transformer sometimes joins a clef change in one staff to a chord of notes
++    or rests in the other. build_measures handles a group by its first symbol, so
++    the clef either became a zero-length rest (or, before a lower-staff note, a
++    phantom rest that shifts the note's onset) or the notes were dropped.
++
++    Split such a group into the clefs followed by the notes and rests. This runs
++    after the tuplet marks are set, so the notes keep their mark and the clef does
++    not interrupt a tuplet. Only groups made entirely of clefs plus notes/rests are
++    split; any other mixture (key or time signature, barline, repeat, volta, ...)
++    is left exactly as the unmodified 0.7.0 exporter handles it.
++    """
++    result: list[SymbolChord] = []
++    for group in groups:
++        clefs = [s for s in group.symbols if s.rhythm.startswith("clef")]
++        timed = [s for s in group.symbols if s.rhythm.startswith(("note", "rest"))]
++        if clefs and timed and len(clefs) + len(timed) == len(group.symbols):
++            result.append(SymbolChord(clefs))
++            result.append(SymbolChord(timed, group.tuplet_mark))
++        else:
++            result.append(group)
++    return result
++
++
+ def build_divisions(division: int) -> mxl.XMLDivisions:
+     # The divisions element indicates how many divisions per quarter(!) note are
+     # used to indicate a note's duration
