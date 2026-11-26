@@ -1,6 +1,6 @@
 # Corresponding source
 
-This directory is the complete source of **homr 0.7.0+brightclef.export3**, a
+This directory is the complete source of **homr 0.7.0+brightclef.export4**, a
 modified version of [homr](https://github.com/liebharc/homr) 0.7.0 by
 Christian Liebhardt and contributors. It is licensed under the GNU Affero
 General Public License version 3 (`LICENSE`), with no additional permissions.
@@ -11,7 +11,7 @@ General Public License version 3 (`LICENSE`), with no additional permissions.
 
 | Item | Value |
 |---|---|
-| Program | `homr` 0.7.0+brightclef.export3, a modified version of homr 0.7.0 |
+| Program | `homr` 0.7.0+brightclef.export4, a modified version of homr 0.7.0 |
 | Upstream | <https://github.com/liebharc/homr>, tag `v0.7.0` = `8b5dcf7d7bdd1a47911dc0c661c573b957271eab` |
 | Upstream sdist | `homr-0.7.0.tar.gz`, SHA-256 `4078b9e70c16a1250288d92e065528bbd8712617339749407f057aebab9cfb7d` (its `homr/` tree is byte-identical to the tag) |
 | Upstream wheel, used only for the stock comparison tests | SHA-256 `84c6028df06e60b1aff158c9049d1876b22137144e319b61bacc41518842c4a9` |
@@ -99,7 +99,7 @@ For the licence of the weights and their training data, see upstream's
 
 ## 6. Getting the source of a running version
 
-Every build records its version, for example `0.7.0+brightclef.export3`. The
+Every build records its version, for example `0.7.0+brightclef.export4`. The
 source of each version is published as the tag and release of the same name in
 this repository, <https://github.com/kevinday/homr-brightclef>. The release carries the wheel, the sdist, the
 corresponding-source archive, `build-manifest.json` and their SHA-256 sums.

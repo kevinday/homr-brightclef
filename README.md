@@ -1,10 +1,10 @@
-# homr 0.7.0+brightclef.export3
+# homr 0.7.0+brightclef.export4
 
 A separately built, **modified** copy of [homr](https://github.com/liebharc/homr)
 0.7.0, the optical music recognition program behind Brightclef's photo import.
 Its MusicXML exporter writes a clef that the decoder joined
 to notes or rests of the other staff as a clef, instead of a zero-length or
-phantom rest. A separate opt-in native CLI flag preserves private pre-export
+phantom rest. This release updates the runtime dependency to Pillow 13. A separate opt-in native CLI flag preserves private pre-export
 symbol evidence. Recognition and the musical exporter are unchanged from export1.
 
 This directory is self-contained and licensed under the GNU AGPL v3 (`LICENSE`,
@@ -64,14 +64,14 @@ engines/homr/build/qualify.sh --python python3.11 --work /tmp/homr-qualify
 
 # 2. Build only.
 python3 engines/homr/build/build.py --out dist/
-#    -> homr-0.7.0+brightclef.export3-py3-none-any.whl
-#       homr-0.7.0+brightclef.export3.tar.gz
-#       homr-0.7.0+brightclef.export3-corresponding-source.tar.gz
+#    -> homr-0.7.0+brightclef.export4-py3-none-any.whl
+#       homr-0.7.0+brightclef.export4.tar.gz
+#       homr-0.7.0+brightclef.export4-corresponding-source.tar.gz
 #       build-manifest.json
 
 # 3. Install a recognition runtime into a NEW venv (never an existing one).
 engines/homr/build/install.sh --python python3.11 --venv /opt/homr --closure runtime \
-  --wheel dist/homr-0.7.0+brightclef.export3-py3-none-any.whl \
+  --wheel dist/homr-0.7.0+brightclef.export4-py3-none-any.whl \
   --wheel-sha256 <hash from build-manifest.json>
 /opt/homr/bin/homr --init        # fetches the checkpoints: a separately approved step
 ```
@@ -121,7 +121,8 @@ installed `homr[cpu]==0.7.0` unpinned, has not been checked.
 
 | Build | `homr` reports | Exporter SHA-256 | Mixed clef groups | Debug rasters |
 |---|---|---|---|---|
-| this build | `0.7.0+brightclef.export3` | `40da256c…7b9` | written as clefs | identical code to 0.7.0 |
+| this build | `0.7.0+brightclef.export4` | `40da256c…7b9` | written as clefs | identical code to 0.7.0 |
+| previous public build | `0.7.0+brightclef.export3` | `40da256c…7b9` | written as clefs | identical code to 0.7.0 |
 | prior private build | `0.7.0+brightclef.export2` | `40da256c…7b9` | written as clefs; same program, earlier maintainer text | identical code to 0.7.0 |
 | prior private build | `0.7.0+brightclef.export1` | `40da256c…7b9` | written as clefs; no native capture | identical code to 0.7.0 |
 | upstream (rollback) | `0.7.0` | `e518ca08…26` | zero-length/phantom rest (known loss) | — |
@@ -212,7 +213,7 @@ From the extracted source archive, run:
 ```sh
 python3 component/build/build.py --sdist upstream/homr-0.7.0.tar.gz --out /tmp/homr-source-rebuild
 # Model-free Linux source-build check (does not build the runtime target):
-docker build --target build -t homr-export3-source-check component
+docker build --target build -t homr-export4-source-check component
 ```
 
 The source-only package excludes Brightclef, private captures, credentials and
