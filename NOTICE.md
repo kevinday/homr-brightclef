@@ -9,7 +9,7 @@ Fourdot Tech LLC adds no further permissions or restrictions under section 7.
 
 ## Identity
 
-- Modified program: `homr` **0.7.0+brightclef.export3**
+- Modified program: `homr` **0.7.0+brightclef.export4**
 - Based on homr 0.7.0:
   - tag `v0.7.0`, commit `8b5dcf7d7bdd1a47911dc0c661c573b957271eab`;
   - PyPI sdist `homr-0.7.0.tar.gz`, SHA-256
@@ -39,7 +39,7 @@ Fourdot Tech LLC adds no further permissions or restrictions under section 7.
      Christian Liebhardt on 5 October 2026), narrowed to clefs.
    - Patch: `patches/0001-split-mixed-clef-chords.patch`.
 2. **`pyproject.toml`.** Patch: `patches/0002-local-version-and-static-build-backend.patch`.
-   - The version is now `0.7.0+brightclef.export3`.
+   - This patch sets the version to `0.7.0+brightclef.export3`.
    - The build backend is poetry-core directly. The sdist already disabled
      dynamic versioning.
 3. **Added `homr/BRIGHTCLEF-NOTICE.md`.** This notice, installed with the
@@ -55,17 +55,19 @@ Fourdot Tech LLC adds no further permissions or restrictions under section 7.
 No recognition, segmentation, decoder, OCR or model logic is changed, and no
 model files are added. The build verifies all other upstream files unchanged.
 
+5. On November 26, 2026, Fourdot Tech LLC changed the Pillow requirement to version 13 and set the local version to `0.7.0+brightclef.export4` in `patches/0004-update-pillow-runtime.patch`. The recognition and export code are identical to export3.
+
 ## Source
 
 The complete corresponding source of this version is
-`homr-0.7.0+brightclef.export3-corresponding-source.tar.gz`, which
+`homr-0.7.0+brightclef.export4-corresponding-source.tar.gz`, which
 `build/build.py` writes beside the wheel. It contains:
 - the unmodified upstream sdist;
 - this component: patches, notices, lock files, build and install scripts,
   tests and fixtures.
 
 Source location: <https://github.com/kevinday/homr-brightclef>, release
-`0.7.0+brightclef.export3`, which carries this archive and the wheel and sdist
+`0.7.0+brightclef.export4`, which carries this archive and the wheel and sdist
 it reproduces. See `SOURCE-PACKAGE.md`.
 
 ## Third-party components and models

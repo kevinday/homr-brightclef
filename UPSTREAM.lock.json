@@ -1,7 +1,7 @@
 {
   "schemaVersion": 2,
   "distribution": "homr",
-  "buildVersion": "0.7.0+brightclef.export3",
+  "buildVersion": "0.7.0+brightclef.export4",
   "exportPreservation": "mixed-clef-chords-v1",
   "upstream": {
     "repository": "https://github.com/liebharc/homr",
@@ -30,7 +30,7 @@
     },
     "pyproject.toml": {
       "baseSha256": "f6fa252e74b22a9f94bda07ca4b420f7c1e5a9fe7c139b95e540e630920e4262",
-      "patchedSha256": "0ff636ead09361b97cf9651dd8a39a9d97efcaface486f4c658af1deae93002e"
+      "patchedSha256": "ca7e9eb4992a9d90bac9f586deacee395c4aea57cfde4a76538c60fe9d6d7f06"
     },
     "homr/main.py": {
       "baseSha256": "b1605b5f22d7fc7f79f7e4d5c932e52bd5e34e655f0a3a1c13d96f2cf99b80fa",
@@ -40,10 +40,11 @@
   "patches": [
     "patches/0001-split-mixed-clef-chords.patch",
     "patches/0002-local-version-and-static-build-backend.patch",
-    "patches/0003-opt-in-symbol-capture.patch"
+    "patches/0003-opt-in-symbol-capture.patch",
+    "patches/0004-update-pillow-runtime.patch"
   ],
-  "sourceDateEpoch": 1792022400,
-  "sourceDateEpochNote": "2026-10-15T00:00:00Z, the date of the export3 version and identity change; earlier modifications are dated in NOTICE.md",
+  "sourceDateEpoch": 1795651200,
+  "sourceDateEpochNote": "2026-11-26T00:00:00Z, the Pillow 13 compatibility update.",
   "addedFiles": {
     "homr/BRIGHTCLEF-NOTICE.md": {
       "from": "NOTICE.md",
@@ -62,5 +63,5 @@
   },
   "buildBackend": "poetry-core==2.4.1 (requirements/build.txt, hash-pinned)",
   "expectedWheelNote": "Pin the reviewed wheel after changes to patches, added native source or NOTICE.md. The wheel excludes this lock, so its pin is stable.",
-  "expectedWheelSha256": "f4a61e1bf12709a011dd8d9e497b4bd7eba2d0fb613655c7d8d7267b39c6d93e"
+  "expectedWheelSha256": "82c15d7a177d02ec92b8b1bdd7d81a543e687b3d0c1e595fad7154c7d264bea3"
 }

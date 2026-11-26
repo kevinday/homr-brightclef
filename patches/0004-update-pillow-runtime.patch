@@ -1,0 +1,25 @@
+From: Fourdot Tech LLC <support@fourdottech.com>
+Date: Thu, 26 Nov 2026
+Subject: Use Pillow 13 for the recognition runtime
+
+Licence: GNU AGPL v3. See ../NOTICE.md.
+
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -1,6 +1,6 @@
+ [tool.poetry]
+ name = "homr"
+-version = "0.7.0+brightclef.export3"
++version = "0.7.0+brightclef.export4"
+ description = "End-to-end Optical Music Recognition (OMR) system build on top of vision transformers."
+ authors = ["Christian Liebhardt <christian.liebhardt@arcor.de>"]
+ license = "AGPL-3.0"
+@@ -12,7 +12,7 @@
+ python = "<3.16,>=3.11"
+ numpy = "^2.4.2"
+ opencv-python-headless = "^4.13.0.92"
+-Pillow = "^12.1.1"
++Pillow = "^13.0.0"
+ types-Pillow = "^10.2.0.20240822"
+ typing_extensions = "^4.15.0"
+ musicxml = "1.4"

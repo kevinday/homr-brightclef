@@ -13,6 +13,7 @@ native/symbol_capture.py
 patches/0001-split-mixed-clef-chords.patch
 patches/0002-local-version-and-static-build-backend.patch
 patches/0003-opt-in-symbol-capture.patch
+patches/0004-update-pillow-runtime.patch
 requirements/build.txt
 requirements/constraints.txt
 requirements/exporter-only.in

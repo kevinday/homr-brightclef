@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build homr 0.7.0+brightclef.export3 from the hash-pinned upstream release.
+"""Build homr 0.7.0+brightclef.export4 from the hash-pinned upstream release.
 
     python3 build/build.py --out DIR [--sdist homr-0.7.0.tar.gz]
 
@@ -9,11 +9,11 @@ throwaway virtual environment. Nothing is installed anywhere else.
 
 Writes to DIR, which must be empty or absent:
 
-  homr-0.7.0+brightclef.export3-py3-none-any.whl
+  homr-0.7.0+brightclef.export4-py3-none-any.whl
       the modified program
-  homr-0.7.0+brightclef.export3.tar.gz
+  homr-0.7.0+brightclef.export4.tar.gz
       a pip-installable sdist of the modified program
-  homr-0.7.0+brightclef.export3-corresponding-source.tar.gz
+  homr-0.7.0+brightclef.export4-corresponding-source.tar.gz
       the complete source this component builds from: the unmodified upstream
       sdist plus this component directory (patches, notices, lock files,
       build/install/qualification scripts, tests and fixtures)

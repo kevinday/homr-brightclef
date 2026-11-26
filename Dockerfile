@@ -14,8 +14,8 @@ RUN apt-get update && apt-get install --yes --no-install-recommends libgl1 libgl
 COPY --from=build /component /component
 COPY --from=build /dist /dist
 RUN bash /component/build/install.sh --python python --venv /opt/homr --closure runtime \
-    --wheel /dist/homr-0.7.0+brightclef.export3-py3-none-any.whl \
-    --wheel-sha256 f4a61e1bf12709a011dd8d9e497b4bd7eba2d0fb613655c7d8d7267b39c6d93e
+    --wheel /dist/homr-0.7.0+brightclef.export4-py3-none-any.whl \
+    --wheel-sha256 82c15d7a177d02ec92b8b1bdd7d81a543e687b3d0c1e595fad7154c7d264bea3
 ENV PYTHONDONTWRITEBYTECODE=1
 WORKDIR /data
 ENTRYPOINT ["/opt/homr/bin/homr"]
